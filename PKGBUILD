@@ -2,10 +2,9 @@
 
 pkgbase=keystone
 pkgname=('keystone' 'python2-keystone')
-pkgver=2013.2.3
+pkgver=2014.1.1
 pkgrel=1
 pkgdesc="OpenStack Identity"
-epoch=$(date +%Y%m%d)
 arch=(any)
 url="https://launchpad.net/keystone"
 license=('Apache')
@@ -13,9 +12,9 @@ depends=('python2' 'python2-setuptools')
 makedepends=('python2-setuptools' 'python2-sphinx' 'python2-oslo-sphinx')
 options=('emptydirs')
 install=keystone.install
-source=("$url/havana/2013.2.3/+download/$pkgbase-$pkgver.tar.gz"
+source=("$url/icehouse/2014.1.1/+download/$pkgbase-$pkgver.tar.gz"
         "keystone.service")
-md5sums=('784e7e1acc55f6f2972847ebe7b8fbdd'
+md5sums=('e99ecd6e0e24fedb69c42108960b3ea4'
          'c3ddbede14b4c937c3da77c81b817345')
 
 build() {
@@ -37,12 +36,12 @@ package_keystone() {
   cd tmp
 
   install -d "${pkgdir}/etc/keystone/"
-  install -m 644 etc/default_catalog.templates "${pkgdir}/etc/keystone/default_catalog.templates"
-  install -m 644 etc/keystone.conf.sample "${pkgdir}/etc/keystone/keystone.conf"
-  install -m 644 etc/keystone-paste.ini "${pkgdir}/etc/keystone/"
-  install -m 644 etc/logging.conf.sample "${pkgdir}/etc/keystone/logging.conf"
-  install -m 644 etc/policy.json "${pkgdir}/etc/keystone/"
-  install -m 644 etc/policy.v3cloudsample.json "${pkgdir}/etc/keystone/"
+  install -m 640 etc/default_catalog.templates "${pkgdir}/etc/keystone/default_catalog.templates"
+  install -m 640 etc/keystone.conf.sample "${pkgdir}/etc/keystone/keystone.conf"
+  install -m 640 etc/keystone-paste.ini "${pkgdir}/etc/keystone/"
+  install -m 640 etc/logging.conf.sample "${pkgdir}/etc/keystone/logging.conf"
+  install -m 640 etc/policy.json "${pkgdir}/etc/keystone/"
+  install -m 640 etc/policy.v3cloudsample.json "${pkgdir}/etc/keystone/"
   
   install -d "${pkgdir}/usr/bin/"
   install -m 755 usr/bin/keystone-all "${pkgdir}/usr/bin/"
@@ -65,24 +64,26 @@ package_python2-keystone() {
            'python2-dogpile-cache>=0.5.0'
            'python2-eventlet>=0.13.0'
            'python2-greenlet>=0.3.2'
-           'python2-iso8601>=0.1.8'
-           'python2-keystoneclient>=0.3.2'
+           'python2-iso8601>=0.1.9'
+           'python2-jsonschema1>=2.0.0'
+           'python2-keystoneclient>=0.7.0'
            'python2-lxml>=2.3'
-           'python2-migrate>=0.7.2'
-           'python2-netaddr'
-           'python2-oauth2'
+           'python2-netaddr>=0.7.6'
+           'python2-oauthlib>=0.6'
+           'python2-openstack-migrate>=0.8.2'
            'python2-oslo-config>=1.2.0'
-           'python2-pam>=0.1.4'
+           'python2-oslo-messaging>=1.3.0'
            'python2-passlib'
            'python2-paste'
            'python2-paste-deploy>=1.5.0'
-           'python2-pbr>=0.5.21'
-           'python2-pbr<1.0.0'
+           'python2-pbr>=0.6'
+           'python2-pycadf>=0.4.1'
            'python2-routes>=1.12.3'
-           'python2-sqlalchemy-0.7.9'
-           'python2-webob>=1.2.3'
-           'python2-webob<1.3.0')
-  optdepends=('python2-pysqlite: optional backend'
+           'python2-six>=1.6.0'
+           'python2-sqlalchemy>=0.7.8'
+           'python2-webob>=1.2.3')
+  optdepends=('python2-pymongo>=2.4: optional backend'
+              'python2-pysqlite: optional backend'
               'python2-memcached>=1.48: optional backend'
               'python2-ldap=2.3.13: optional backend')
 
