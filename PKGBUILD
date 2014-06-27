@@ -21,12 +21,12 @@ md5sums=('784e7e1acc55f6f2972847ebe7b8fbdd'
 build() {
   cd "$pkgbase-$pkgver"
   /usr/bin/python2 setup.py build
-  /usr/bin/python2 -d setup.py build_sphinx
+  #/usr/bin/python2 -d setup.py build_sphinx
   /usr/bin/python2 setup.py install --root="$srcdir/tmp" \
                                     --install-data="/" \
                                     --optimize=1
   cp -R etc/ "$srcdir/tmp/"
-  cp -R doc/build/man/ "$srcdir/tmp/"
+  #cp -R doc/build/man/ "$srcdir/tmp/"
 }
 
 package_keystone() {
@@ -48,9 +48,9 @@ package_keystone() {
   install -m 755 usr/bin/keystone-all "${pkgdir}/usr/bin/"
   install -m 755 usr/bin/keystone-manage "${pkgdir}/usr/bin/"
 
-  install -d "${pkgdir}/usr/share/man/man1/"
-  install -m 644 man/keystone-all.1 "${pkgdir}/usr/share/man/man1/"
-  install -m 644 man/keystone-manage.1 "${pkgdir}/usr/share/man/man1/"
+  #install -d "${pkgdir}/usr/share/man/man1/"
+  #install -m 644 man/keystone-all.1 "${pkgdir}/usr/share/man/man1/"
+  #install -m 644 man/keystone-manage.1 "${pkgdir}/usr/share/man/man1/"
 
   install -D -m 644 ${srcdir}/keystone.service "${pkgdir}/usr/lib/systemd/system/keystone.service"
 
