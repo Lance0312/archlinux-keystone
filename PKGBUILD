@@ -1,8 +1,7 @@
 # Maintainer: Lance Chen <cyen0312+aur@gmail.com>
 
 pkgbase=keystone
-pkgname=keystone
-true && pkgname=('keystone' 'python2-keystone')
+pkgname=('keystone' 'python2-keystone')
 pkgver=2013.2.3
 pkgrel=1
 pkgdesc="OpenStack Identity"
